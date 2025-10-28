@@ -1,0 +1,63 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    int taskChoice;
+    bool continueProgram = true;
+    
+    while (continueProgram) {
+        cout << "=== ВЫБЕРИТЕ ЗАДАЧУ ===" << endl;
+        cout << "1. Таблица умножения" << endl;
+        cout << "2. Поиск делителей числа" << endl;
+        cout << "3. Выйти из программы" << endl;
+        cout << "Ваш выбор: ";
+        cin >> taskChoice;
+        
+        if (taskChoice == 1) {
+            // Задача 1: Таблица умножения
+            cout << "\n=== ТАБЛИЦА УМНОЖЕНИЯ ===" << endl;
+            
+            for (int i = 1; i <= 9; i++) {
+                for (int j = 1; j <= 9; j++) {
+                    cout << setw(3) << i * j << " ";
+                }
+                cout << endl;
+            }
+            
+        } else if (taskChoice == 2) {
+            // Задача 2: Поиск делителей числа
+            int number;
+            cout << "\n=== ПОИСК ДЕЛИТЕЛЕЙ ЧИСЛА ===" << endl;
+            cout << "Введите число: ";
+            cin >> number;
+            
+            if (number > 0) {
+                cout << "Делители числа " << number << ": ";
+                for (int i = 1; i <= number; i++) {
+                    if (number % i == 0) {
+                        cout << i << " ";
+                    }
+                }
+                cout << endl;
+            } else {
+                cout << "Пожалуйста, введите положительное число!" << endl;
+            }
+            
+        } else if (taskChoice == 3) {
+            cout << "До свидания!" << endl;
+            continueProgram = false;
+        } else {
+            cout << "Неверный выбор! Попробуйте снова." << endl;
+        }
+        
+        if (continueProgram && taskChoice != 3) {
+            cout << "\nНажмите Enter для продолжения...";
+            cin.ignore();
+            cin.get();
+        }
+    }
+    
+    return 0;
+}
