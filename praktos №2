@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+bool guessNumberGame() {
+    // Инициализация генератора случайных чисел
+    srand(time(0));
+    
+    // Генерация случайного числа от 0 до 100
+    int randomNumber = rand() % 101;
+    int userGuess;
+    int attempts = 0;
+    
+    cout << "=== УГАДАЙ ЧИСЛО ===" << endl;
+    cout << "Компьютер загадал число от 0 до 100." << endl;
+    cout << "Попробуйте угадать его!" << endl;
+    
+    do {
+        cout << "Введите ваше число: ";
+        cin >> userGuess;
+        attempts++;
+        
+        if (userGuess < randomNumber) {
+            cout << "Загаданное число БОЛЬШЕ!" << endl;
+        } else if (userGuess > randomNumber) {
+            cout << "Загаданное число МЕНЬШЕ!" << endl;
+        } else {
+            cout << "ПОЗДРАВЛЯЮ! Вы угадали число " << randomNumber;
+            cout << " с " << attempts << " попытки!" << endl;
+            return true;
+        }
+        
+    } while (userGuess != randomNumber);
+    
+    return true;
+}
+
+int main() {
+    int choice;
+    bool continueProgram = true;
+    
+    while (continueProgram) {
+        cout << "\n=== ГЛАВНОЕ МЕНЮ ===" << endl;
+        cout << "1. Играть в 'Угадай число'" << endl;
+        cout << "2. Выйти из программы" << endl;
+        cout << "Выберите действие: ";
+        cin >> choice;
+        
+        if (choice == 1) {
+            bool gameResult = guessNumberGame();
+        } else if (choice == 2) {
+            cout << "До свидания!" << endl;
+            continueProgram = false;
+        } else {
+            cout << "Неверный выбор! Попробуйте снова." << endl;
+        }
+    }
+    
+    return 0;
+}
